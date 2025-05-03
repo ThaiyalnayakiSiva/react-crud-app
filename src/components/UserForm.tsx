@@ -28,28 +28,26 @@ const UserForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
-          {userFormSchema.map((field) => (
-            <TextField
-              key={field.name}
-              label={field.label}
-              type={field.type}
-              fullWidth
-              error={!!errors[field.name as keyof User]}
-              helperText={
-                errors[field.name as keyof User]?.message ||
-                (errors[field.name as keyof User]?.type === 'required'
-                  ? `${field.label} is required`
-                  : '')
-              }
-              {...register(field.name as keyof User, {
-                required: field.required,
-                pattern: field.pattern ? {
-                  value: field.pattern,
-                  message: `Invalid ${field.label}`,
-                } : undefined,
-              })}
-            />
-          ))}
+        {userFormSchema.map((field) => (
+  <TextField
+    key={field.name}
+    label={field.label}
+    type={field.type}
+    fullWidth
+    error={!!errors[field.name as keyof User]}
+    helperText={
+      errors[field.name as keyof User]?.message ||
+      (errors[field.name as keyof User]?.type === 'required'
+        ? `${field.label} is required`
+        : '')
+    }
+    {...register(field.name as keyof User, {
+      required: field.required,
+      pattern: field.pattern || undefined, // Directly assign pattern or undefined
+    })}
+  />
+))}
+
           <Button type="submit" variant="contained" color="primary">
             {defaultValues ? 'Update' : 'Create'}
           </Button>
