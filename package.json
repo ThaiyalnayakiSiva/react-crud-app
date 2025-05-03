@@ -1,7 +1,7 @@
 {
   "name": "assessmentapp",
   "private": true,
-  "homepage": "https://ThaiyalnayakiSiva.github.io/react-curd-app",
+  "homepage": "https://ThaiyalnayakiSiva.github.io/react-crud-app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
