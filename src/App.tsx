@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { User } from './types/usertypes';
 import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
 import { getUsers, createUser, updateUser, deleteUser } from './services/userApi';
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
-import { Button, Container, Dialog, DialogTitle, useMediaQuery, useTheme, AppBar, Toolbar, Typography } from '@mui/material';
+import { Button, Container, Dialog, DialogTitle, IconButton, useMediaQuery, useTheme, AppBar, Toolbar, Typography, } from '@mui/material';
 
 function App() {
   const [users, setUsers] = useState<User[]>([]);
@@ -60,7 +61,17 @@ function App() {
       <Container maxWidth="lg" style={{ padding: '2rem', overflowY: 'auto', height: 'calc(100vh - 64px)' }}>
         <UserList users={users} onEdit={(user) => { setEditingUser(user); setOpenDialog(true); }} onDelete={handleDelete} />
         <Dialog open={openDialog} onClose={() => setOpenDialog(false)} fullScreen={fullScreen} maxWidth="sm" fullWidth>
-          <DialogTitle>{editingUser ? 'Edit User' : 'Add New User'}</DialogTitle>
+          <DialogTitle sx={{ position: 'relative' }}>
+            {editingUser ? 'Edit User' : 'Add New User'}
+            <IconButton
+              edge="end"
+              color="inherit"
+              onClick={() => setOpenDialog(false)}
+              sx={{ position: 'absolute', top: 8, right: 8, zIndex: 1, }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
           <UserForm onSubmit={handleSubmit} defaultValues={editingUser} />
         </Dialog>
       </Container>

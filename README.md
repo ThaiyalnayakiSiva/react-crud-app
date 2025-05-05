@@ -7,7 +7,7 @@ This is a user management **CRUD** application built with **React + Vite**, styl
 ## 🌐 Live Demo
 
 **Frontend**: [https://ThaiyalnayakiSiva.github.io/react-crud-app](https://ThaiyalnayakiSiva.github.io/react-crud-app)  
-**Mock API (Render)**: [https://your-json-server.onrender.com/users](https://your-json-server.onrender.com/users)
+**Mock API (Render)**: [https://json-server-api-c9e5.onrender.com/users](https://json-server-api-c9e5.onrender.com/users)
 
 ---
 

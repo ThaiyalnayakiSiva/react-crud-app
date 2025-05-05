@@ -10,7 +10,7 @@ import {
   TableContainer,
   useMediaQuery,
   Typography,
-  Box,
+  Box,Card, CardContent, CardActions,
 } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
@@ -31,17 +31,30 @@ const UserList: React.FC<Props> = ({ users, onEdit, onDelete }) => {
     <TableContainer component={Paper} sx={{ mt: 2 }}>
       {isMobile ? (
         users.map((user) => (
-          <Paper key={user.id} sx={{ p: 2, mb: 2 }}>
+          <Card key={user.id} sx={{ mb: 2, borderRadius: 2 }}>
+          <CardContent sx={{ padding: isMobile ? 2 : 3 }}>
             {userFormSchema.map((field) => (
-              <Typography key={field.name} variant="body2">
+              <Typography
+                key={field.name}
+                variant={isMobile ? 'body2' : 'body1'}
+                sx={{ mb: 1 }}
+              >
                 <strong>{field.label}:</strong> {user[field.name as keyof User]}
               </Typography>
             ))}
-            <Box mt={1}>
-              <IconButton onClick={() => onEdit(user)}><Edit /></IconButton>
-              <IconButton onClick={() => onDelete(user.id!)}><Delete /></IconButton>
+          </CardContent>
+
+          <CardActions sx={{ justifyContent: 'space-between', padding: isMobile ? 1 : 2 }}>
+            <Box display="flex" gap={1}>
+              <IconButton onClick={() => onEdit(user)} size={isMobile ? 'small' : 'medium'}>
+                <Edit />
+              </IconButton>
+              <IconButton onClick={() => user.id !== undefined && onDelete(user.id)} size={isMobile ? 'small' : 'medium'}>
+                <Delete />
+              </IconButton>
             </Box>
-          </Paper>
+          </CardActions>
+        </Card>
         ))
       ) : (
         <Table stickyHeader>
