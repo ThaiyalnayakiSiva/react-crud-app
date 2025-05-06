@@ -7,4 +7,4 @@ export const updateUser = (id:any, data:any) => axios.put(`${BASE_URL}/users/${i
 export const deleteUser = (id:any) => axios.delete(`${BASE_URL}/users/${id}`);
 
 export const getUserSchema = () => axios.get(`${BASE_URL}/formSchema`);
-export const updateUserSchema = (data:any) => axios.put(`${BASE_URL}/formSchema`,data);
+export const updateUserSchema = (data:any) => axios.post(`${BASE_URL}/formSchema`,data);

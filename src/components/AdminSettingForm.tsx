@@ -36,13 +36,9 @@ const AdminSettingForm: React.FC = () => {
     const handleAddField = async () => {
         setFields([...fields, newField]); // Add new field to the schema
         // Save updated schema to backend (JSON Server)
-        // fetch('http://localhost:5000/formSchema', {
-        //   method: 'PUT',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify([...fields, newField]),
-        // });
-        await updateUserSchema([...fields, newField]); // Update the schema in the backend
-
+        // await updateUserSchema([...fields, newField]); // Update the schema in the backend
+       
+        await updateUserSchema(newField); 
         // Reset form for new field
         setNewField({ name: '', label: '', type: 'text', required: false });
     };

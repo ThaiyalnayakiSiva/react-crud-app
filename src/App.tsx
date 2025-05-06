@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div style={{ height: '100vh', width: '100vw', overflow: 'hidden' }}>
-      <Router>
+      {/* <Router> */}
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" style={{ flexGrow: 1 }}>
@@ -119,7 +119,7 @@ function App() {
             <UserForm onSubmit={handleSubmit} defaultValues={editingUser} />
           </Dialog>
         </Container>
-      </Router>
+      {/* </Router> */}
     </div>
   );
 }
